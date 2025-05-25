@@ -113,10 +113,10 @@ void Scene::resetFrameBuffer(const int width, const int height) {
 	_entities.clear();
 	_uniqueId = 0;
 
-	// Establece el tamaño de los píxeles en función de la dimensión más pequeña (ancho o altura)
+	// Cambia el tamaño de los pixeles teniendo encuenta lo mas pequeño ancho o alto
 	int pixelSize = std::min(height, width) / 16;
 
-	// Coloca el FrameBuffer en el medio de la pantalla con el tamaño máximo posible
+	//Centra el FrameBuffer en medio lo mas grande posible 
 	SDL_Rect frameBufferRect{
 		.x = (width - pixelSize * 16) / 2,
 		.y = (height - pixelSize * 16) / 2,
@@ -127,7 +127,7 @@ void Scene::resetFrameBuffer(const int width, const int height) {
 	for (int i = 0; i < _frameBuffer.size(); ++i) {
 		const SDL_Point pixelCoords{ i % 16 , i / 16 };
 
-		// Encuentra la posición de cada píxel a partir de las coordenadas y propiedades del FrameBuffer
+		// localiza los pixeles a partir de las coordenadas y propiedades del framebuffer
 		const SDL_Point pixelPosition{
 			.x = frameBufferRect.x + pixelCoords.x * pixelSize,
 			.y = frameBufferRect.y + pixelCoords.y * pixelSize,
